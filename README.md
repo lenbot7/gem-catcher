@@ -1,1 +1,1 @@
-A godot project from a udemy course
+A godot project from a udemy course.

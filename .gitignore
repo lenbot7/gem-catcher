@@ -390,3 +390,7 @@ $RECYCLE.BIN/
 *.msp
 *.lnk
 *.generated.props
+
+
+*.translation
+.godot/

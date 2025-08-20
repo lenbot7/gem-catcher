@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0ycm5j6u4sc3"]
+
+[ext_resource type="Script" uid="uid://dpgmms0k0i22g" path="res://scenes/game/game.gd" id="1_kelw5"]
+[ext_resource type="Texture2D" uid="uid://uwt1lq4c5evn" path="res://assets/GameBg.png" id="1_sul5r"]
+[ext_resource type="PackedScene" uid="uid://dtkdlqq2os0bq" path="res://scenes/paddle/paddle.tscn" id="2_7h61r"]
+[ext_resource type="AudioStream" uid="uid://crfka2rl6fs4d" path="res://assets/bgm_action_5.mp3" id="4_kelw5"]
+[ext_resource type="AudioStream" uid="uid://7f6xeotao3v7" path="res://assets/spell1_0.wav" id="5_lfrn8"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_kelw5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576.111, 324)
+scale = Vector2(0.600115, 0.6)
+texture = ExtResource("1_sul5r")
+
+[node name="Paddle" parent="." instance=ExtResource("2_7h61r")]
+position = Vector2(571, 588)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_kelw5")
+volume_db = -15.0
+autoplay = true
+
+[node name="ScoreSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_lfrn8")
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 6.0
+offset_right = 56.0
+offset_bottom = 29.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 3
+theme_override_font_sizes/font_size = 48
+text = "000"
+
+[connection signal="area_entered" from="Paddle" to="." method="_on_paddle_area_entered"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]

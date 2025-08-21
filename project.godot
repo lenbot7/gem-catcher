@@ -14,6 +14,7 @@ config/name="Gem Catcher"
 run/main_scene="uid://c0ycm5j6u4sc3"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
+config/windows_native_icon="res://gem_icon.ico"
 
 [input]
 
